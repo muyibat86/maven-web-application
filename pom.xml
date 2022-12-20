@@ -100,14 +100,14 @@
 	    
 	    <snapshotRepository>
 		    <id>nexus</id>
-	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://http://52.14.104.74:8081/repository/tesla-repo2/</url>
+	      <name>Landmark Technologies Snapshot Nexus Repository</name>
+	      <url>http://52.14.104.74:8081/repository/tesla-repo2/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
 	
 	
-		<finalName>tesla-webapp</finalName>
+		<finalName>tesla</finalName>
 		
 		<plugins>
 			<plugin>
