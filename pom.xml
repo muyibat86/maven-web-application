@@ -11,8 +11,8 @@
 	<name>maven-web-application</name>
 
 	<description>Maven Web Project for Java Project</description>
-
-	<organization>
+        <organization>
+	
 		<name>Landmark Technologies</name>
 		<url>http://landmarktechnologies.com/</url>
 	</organization>
@@ -107,7 +107,7 @@
 	</distributionManagement>
 	
 	
-		<finalName>tesla-app</finalName>
+		<finalName>tesla</finalName>
 		
 		<plugins>
 			<plugin>
