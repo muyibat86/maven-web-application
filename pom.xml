@@ -107,7 +107,7 @@
 	</distributionManagement>
 	
 	
-		<finalName>tesla</finalName>
+		<finalName>tesla-repo</finalName>
 		
 		<plugins>
 			<plugin>
