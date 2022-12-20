@@ -107,7 +107,7 @@
 	</distributionManagement>
 	
 	
-		<finalName>tesla-repo</finalName>
+		<finalName>tesla-webapp</finalName>
 		
 		<plugins>
 			<plugin>
