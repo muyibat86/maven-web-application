@@ -1,0 +1,54 @@
+pipeline{
+  agent any 
+  tools{
+    maven "maven3.8.6"
+  }  
+  stages {
+    stage('1GetCode'){
+      steps{
+        git "https://github.com/muyibat86/maven-web-application"
+        git branch: 'development', credentialsId: 'git_hubcredential', url: 'https://github.com/muyibat86/maven-web-application'
+      }
+    }
+    stage('3Test+Build'){
+      steps{
+        sh "echo 'running JUnit-test-cases'"
+        sh "echo 'testing must passed to create artifacts'"
+        sh "mvn clean package"
+      }
+    }
+    stage('4CodeQuality'){
+      steps{
+        sh "echo 'Perfoming CodeQualityAnalysis'"
+        sh "mvn sonar:sonar"
+}
+    }
+    stage('5uploadNexus'){
+      steps{
+        sh "mvn deploy"
+}
+}
+stage('8deploy2prod'){
+      steps{
+          deploy adapters: [tomcat9(credentialsId: 'tomcat9credential', path: '', url: 'http://3.14.134.42:8080/')], contextPath: null, war: 'target/*war'
+}
+}
+}
+post{
+    always{
+        emailext body: '''Hello All,
+ Build is done.''', recipientProviders: [developers(), upstreamDevelopers(), contributor()], subject: 'Boa project build', to: 'realmay0927@gmail.com'
+    }
+     success{
+ emailext body: '''Hello All,
+ Build was successful.''', recipientProviders: [developers(), upstreamDevelopers(), contributor()], subject: 'Boa project build', to: 'realmay0927@gmail.com'
+     }
+ failure{
+ emailext body: '''Hello All,
+ Build failed.''', recipientProviders: [developers(), upstreamDevelopers(), contributor()], subject: 'Boa project build', to: 'realmay0927@gmail.com'
+     }
+}
+}
+ 
+
+
