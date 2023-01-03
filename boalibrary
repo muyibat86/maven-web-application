@@ -1,0 +1,33 @@
+@Library('boalibrary-sharedlibs') _
+pipeline{
+  agent any 
+  tools{
+    maven "maven3.8.6"
+  }  
+  stages {
+    stage('GetCode'){
+      steps{
+      sh "echo start of project"
+        git "https://github.com/muyibat86/maven-web-application"
+      }
+    }
+    }
+    stage('Test+Build'){
+      steps{
+      common("Test+Build")
+      }
+    }
+    stage('CodeQuality'){
+      steps{
+        common("CodeQualityAnalysis")
+}
+    }
+    stage('upload artifact'){
+      steps{
+       common("upload into Nexus") 
+}
+}
+//=========================
+}// Stages Close
+} // Pipeline Close
+
