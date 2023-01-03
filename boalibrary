@@ -1,4 +1,4 @@
-@Library('boalibrary') _
+@Library('boalibrary')_
 pipeline{
   agent any 
   tools{
