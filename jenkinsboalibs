@@ -5,25 +5,25 @@ pipeline{
     maven "maven3.8.6"
   }  
   stages {
-    stage('GetCode'){
+    stage("checkout"){
       steps{
-      sh "echo start of boa project"
         git "https://github.com/muyibat86/maven-web-application"
+    }
+    }
+    stage("Build"){
+      steps{
+      common("Build")
       }
     }
-    }
-    stage('Test+Build'){
+stage("execute sonarqube report"){
       steps{
-      common("Test+Build")
-      }
-    }
-    stage('CodeQuality'){
-      steps{
-        common("CodeQualityAnalysis")
+          sh "echo code quality report"
+        common("sonarqube report")
 }
     }
-    stage('upload artifact'){
+  stage("upload artifact"){
       steps{
+          sh "echo artifact uploaded"
        common("upload into Nexus") 
 }
 }
