@@ -7,7 +7,7 @@ pipeline{
   stages {
     stage('GetCode'){
       steps{
-      sh "echo start of project"
+      sh "echo start of boa project"
         git "https://github.com/muyibat86/maven-web-application"
       }
     }
